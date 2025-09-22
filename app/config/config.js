@@ -2,7 +2,7 @@ export const PORT = 5000;
 export const DATABASE = 'mongodb+srv://saifulcse47:saifulcse47@cluster0.whacrfj.mongodb.net/task_management_api?retryWrites=true&w=majority&appName=Cluster0';
 export const JWT_KEY = 'JWT_KEY';
 export const JWT_SECRET = 'JWT_SECRET';
-export const JWT_EXPIRATION = 1000;
+export const JWT_EXPIRATION = 30*24*60*60;
 
 export const EMAIL_HOST = 'sandbox.smtp.mailtrap.io';
 export const EMAIL_USERNAME = 'a71f0f1651c922';
