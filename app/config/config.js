@@ -7,7 +7,7 @@ export const JWT_EXPIRATION = 30*24*60*60;
 export const EMAIL_HOST = 'sandbox.smtp.mailtrap.io';
 export const EMAIL_USERNAME = 'a71f0f1651c922';
 export const EMAIL_PASSWORD = 'beae2400389565';
-export const EMAIL_SECURITY = 'EMAIL_SECURITY';
+export const EMAIL_SECURITY = false;
 export const EMAIL_PORT = 25;
 export const EMAIL_UN_AUTH = false;
 

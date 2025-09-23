@@ -7,6 +7,7 @@ import * as UsersController from '../app/controllers/UsersController.js';
 
 router.post('/registration', UsersController.Registration)
 router.post('/login', UsersController.Login)
+router.post('/ProfileDetails', UsersController.ProfileDetails)
 
 
 
