@@ -8,6 +8,10 @@ export const TokenEncode =  (email, user_id) =>{
     return jwt.sign(PAYLOAD,KEY,EXPIRATION);
 }
 
-export const TokenDecode = async (req, res) =>{
-
+export const TokenDecode =  (token) => {
+    try{
+        return jwt.verify(token, JWT_KEY);
+    }catch(e){
+        return null;
+    }
 }
