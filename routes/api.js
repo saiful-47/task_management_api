@@ -10,6 +10,7 @@ router.post('/registration', UsersController.Registration)
 router.post('/login', UsersController.Login)
 router.get('/ProfileDetails',AuthMiddlewares,UsersController.ProfileDetails)
 router.post('/ProfileUpdate',AuthMiddlewares,UsersController.ProfileUpdate)
+router.get('/EmailVerify/:email',UsersController.EmailVerify)
 
 
 

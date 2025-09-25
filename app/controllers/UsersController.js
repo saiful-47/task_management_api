@@ -1,5 +1,6 @@
 import UserModel from '../models/UserModel.js';
 import {TokenEncode} from "../utility/TokenUtility.js";
+import EmailSend from "../utility/EmailUtility.js";
 
 
 export const Registration = async (req, res) => {
@@ -48,6 +49,30 @@ export const ProfileUpdate = async (req, res) => {
         let reqBody = req.body;
         await UserModel.updateOne({'_id': user_id},reqBody);
         return res.json({status: 'success', message: 'Profile update successfully'});
+    }catch(e){
+        return res.json({status: 'fail', message: e.toString()});
+    }
+}
+
+export const EmailVerify = async (req, res) => {
+    try{
+        let email = req.params.email;
+        let data = await UserModel.findOne({email: email});
+        if(data==null){
+            return res.json({status: 'fail', message: 'User email does not exist'});
+        }else{
+            // send OTP to email
+            let code = Math.floor(100000+Math.random()*900000);
+            let EmailTo = data['email'];
+            let EmailText = "Your code is "+ code;
+            let EmailSubject = "Task Manager Verification Code";
+            await EmailSend(EmailTo, EmailText, EmailSubject);
+
+            //update OTP in user
+            await UserModel.updateOne({email: email}, {otp: code});
+            return res.json({status: 'success', message: 'Verification send successfully, check your email'});
+        }
+
     }catch(e){
         return res.json({status: 'fail', message: e.toString()});
     }
