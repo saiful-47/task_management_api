@@ -9,6 +9,7 @@ import AuthMiddlewares from "../app/middlewares/AuthMiddlewares.js";
 router.post('/registration', UsersController.Registration)
 router.post('/login', UsersController.Login)
 router.get('/ProfileDetails',AuthMiddlewares,UsersController.ProfileDetails)
+router.post('/ProfileUpdate',AuthMiddlewares,UsersController.ProfileUpdate)
 
 
 
