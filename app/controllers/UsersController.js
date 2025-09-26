@@ -78,3 +78,19 @@ export const EmailVerify = async (req, res) => {
     }
 }
 
+export const CodeVerify = async (req, res) => {
+    try{
+        let reqBody = req.body;
+        let data = await UserModel.findOne({email: reqBody['email'], otp: reqBody['otp']});
+        if(data==null){
+            return res.json({status: 'fail', message: 'Verification code is wrong'  });
+        }else{
+            await data.updateOne({otp: 0})
+            return res.json({status: 'success', message: 'Verification successfully'  });
+        }
+
+    }catch(e){
+        return res.json({status: 'fail', message: e.toString()});
+    }
+}
+
