@@ -12,6 +12,7 @@ router.get('/ProfileDetails',AuthMiddlewares,UsersController.ProfileDetails)
 router.post('/ProfileUpdate',AuthMiddlewares,UsersController.ProfileUpdate)
 router.get('/EmailVerify/:email',UsersController.EmailVerify)
 router.post('/CodeVerify',UsersController.CodeVerify)
+router.post('/ResetPassword',UsersController.ResetPassword)
 
 
 

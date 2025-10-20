@@ -94,3 +94,22 @@ export const CodeVerify = async (req, res) => {
     }
 }
 
+export const ResetPassword = async (req, res) => {
+    try{
+        let reqBody = req.body;
+        let data = await UserModel.findOne({email: reqBody['email'], otp: reqBody['otp']});
+        if(data==null){
+            return res.json({status: 'fail', message: 'Verification code is wrong'  });
+        }else{
+            let data = await UserModel.findOne({email: reqBody['email']},{
+                otp: reqBody['otp'],
+                password: reqBody['password'],
+            });
+            return res.json({status: 'success', message: 'Password reset successfully'});
+        }
+
+    }catch(e){
+        return res.json({status: 'fail', message: e.toString()});
+    }
+}
+
