@@ -14,3 +14,17 @@ export const CreateTask = async (req, res) => {
         return res.json({status: 'fail', message: e.toString()});
     }
 }
+
+export const UpdateTaskStatus = async(req, res) => {
+    try{
+        let id = req.params.id;
+        let status = req.params.status;
+        let user_id = req.headers['user_id'];
+
+        await TaskModel.updateOne({'_id':id, 'user_id':user_id}, {status:status});
+        return res.status(201).json({status: 'success', message: 'Task updated successfully'});
+
+    }catch (e){
+        return res.json({status: 'fail', message: e.toString()});
+    }
+}
