@@ -28,3 +28,18 @@ export const UpdateTaskStatus = async(req, res) => {
         return res.json({status: 'fail', message: e.toString()});
     }
 }
+
+export const TaskListByStatus = async (req, res) => {
+    try{
+        let user_id = req.headers['user_id'];
+        let status = req.params.status;
+        let data = await TaskModel.find({'user_id':user_id, 'status':status});
+        if(data == null){
+            return res.json({message: 'Task list not found'});
+        }else{
+            return res.json({status: 'success', data: data});
+        }
+    }catch(e){
+        return res.json({status: 'fail', message: e.toString()});
+    }
+}

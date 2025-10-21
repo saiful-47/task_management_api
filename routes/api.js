@@ -17,6 +17,7 @@ router.post('/ResetPassword',UsersController.ResetPassword)
 // task
 router.post('/CreateTask',AuthMiddlewares,TasksController.CreateTask)
 router.post('/UpdateTaskStatus/:id/:status',AuthMiddlewares,TasksController.UpdateTaskStatus)
+router.get('/TaskListByStatus/:status',AuthMiddlewares,TasksController.TaskListByStatus)
 
 
 
