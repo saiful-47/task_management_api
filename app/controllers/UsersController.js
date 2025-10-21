@@ -113,3 +113,16 @@ export const ResetPassword = async (req, res) => {
     }
 }
 
+export const CreateTask = async (req, res) => {
+    try{
+        // let user_id = req.headers['user_id'];
+        return res.json('user_id');
+        // let requestBody = req.body;
+        // await TaskModel.create(requestBody);
+        // return res.status(201).json({status: 'success', message: 'Task Created successfully', data: requestBody});
+
+    }catch(e){
+        return res.json({status: 'fail', message: e.toString()});
+    }
+}
+
